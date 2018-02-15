@@ -1,0 +1,77 @@
+$ git config --global user.email "hadeeladelabbas@gmail.com"
+$ git config --global user.name "Hadeel Abbas"
+$ git init
+
+(after adding the 3 files nothing added to commit but untracked files present)
+$ git status
+
+(add to staging area) 
+$ git add . 
+
+(3 files: changes to be committed)
+$ git status
+
+4 scenarios for delete and rollback (remove from staging, removing from pc, rollback after commit commit both addition and deletion then using git revert)
+1) unstage the deleted file from and retrieve it without removing it from pc but removed it from staging area
+$ git rm --cached book_3.1.txt
+$git status
+$ git add book_3.1.txt
+
+2) remove from pc but it's still in staging area
+$ rm -rf book_3.1.txt
+$ git status
+$ ls
+$ git checkout -- book_3.1.txt
+git status
+ls
+
+$ git commit -m "added book 1.1, 3.1 and 5.1 files"
+$ git status
+
+3) removing file after commit
+$ git rm book_3.1.txt
+$ ls
+$ git status
+$ git reset HEAD book_3.1.txt
+$ ls
+$ git status
+$ git checkout -- book_3.1.txt
+$ ls
+$ git status
+$ git log
+
+$ git remote add origin https://github.com/HadeelAbbas/HadeelSE.git
+$ git push origin master
+
+4) commit deletion and use git revert
+$ git rm book_3.1.txt
+$ git status
+$ git commit -m "Deleted book_3.1.txt"
+$ git status
+(to get the hash for commit to revert to)
+$ git log
+$ git revert 7286db4938ce5edd9413dc89e36f798cee2f8b8a
+$ git status
+$ ls
+
+
+$ git branch ReadMe
+$ git checkout ReadMe
+$ git status
+$ git add README.md
+$ git commit -m "added readme file"
+$ git status
+$ git push origin ReadMe
+$ git status
+
+$ git checkout master
+$ git status
+$ git merge ReadMe
+$ git status
+$ git push origin master
+
+$ git status
+$ git add AllMyCommands.txt
+$ git commit -m "Added AllMyCommands file"
+$ git status
+$ git push origin master
